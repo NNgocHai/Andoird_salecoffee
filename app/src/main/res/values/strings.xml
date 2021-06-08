@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">18110278_App_salecoffee</string>
+
+
+    <string name="admin_sign_up">Sign up as Admin</string>
+    <string name="employee_sign_up">Sign up as Employee</string>
+    <string name="name_error">Enter your username</string>
+    <string name="email_error">Enter your  email</string>
+    <string name="password_error">Enter your password</string>
+    <string name="confirm_password_error">Confirm password wrong</string>
+    <string name="welcome">Welcome </string>
+    <string name="welcome_role">You are an </string>
+    <string name="name_error_login">This account does not exist</string>
+    <string name="password_error_login">Password wrong</string>
+    <string name="login_error">Login wrong</string>
+</resources>
