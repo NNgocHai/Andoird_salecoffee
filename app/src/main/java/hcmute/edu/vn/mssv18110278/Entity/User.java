@@ -18,6 +18,26 @@ public class User implements Parcelable {
   private int role;
   private byte[] image;
 
+  protected User(Parcel in) {
+    id = in.readInt();
+    username = in.readString();
+    gmail = in.readString();
+    role = in.readInt();
+    image = in.createByteArray();
+  }
+
+  public static final Creator<User> CREATOR = new Creator<User>() {
+    @Override
+    public User createFromParcel(Parcel in) {
+      return new User(in);
+    }
+
+    @Override
+    public User[] newArray(int size) {
+      return new User[size];
+    }
+  };
+
   public byte[] getImage() {
     return image;
   }
@@ -74,6 +94,10 @@ public class User implements Parcelable {
 
   @Override
   public void writeToParcel(Parcel dest, int flags) {
-
+    dest.writeInt(id);
+    dest.writeString(username);
+    dest.writeString(gmail);
+    dest.writeInt(role);
+    dest.writeByteArray(image);
   }
 }

@@ -3,7 +3,7 @@
 
 
     <string name="admin_sign_up">Sign up as Admin</string>
-    <string name="employee_sign_up">Sign up as Employee</string>
+    <string name="employee_sign_up">Sign up as Customer</string>
     <string name="name_error">Enter your username</string>
     <string name="email_error">Enter your  email</string>
     <string name="password_error">Enter your password</string>
@@ -13,4 +13,16 @@
     <string name="name_error_login">This account does not exist</string>
     <string name="password_error_login">Password wrong</string>
     <string name="login_error">Login wrong</string>
+    <string name="product">Product</string>
+    <string name="order">Order</string>
+    <string name="report">Report</string>
+    <string name="employee_insert_item1">INSERT ITEM</string>
+    <string name="employee_insert_item2">Enter information</string>
+    <string name="employee_item_name">Item name</string>
+    <string name="employee_item_price">Item price</string>
+    <string name="employee_item_detail">Item detail</string>
+    <string name="employee_submit">Submit</string>
+    <string name="error_existname">Enter name item</string>
+    <string name="employee_item_category">Item Category</string>
+    <string name="unique_username">Username existed</string>
 </resources>

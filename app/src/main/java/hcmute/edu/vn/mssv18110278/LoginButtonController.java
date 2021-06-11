@@ -6,11 +6,9 @@ import android.os.Parcelable;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import hcmute.edu.vn.mssv18110278.Users.Admin.AdminHomeActivity;
 import hcmute.edu.vn.mssv18110278.Users.Customer.CustomerHomeActivity;
-import hcmute.edu.vn.mssv18110278.Users.Employee.EmployeeHomeActivity;
+import hcmute.edu.vn.mssv18110278.Users.Admin.AdminActivity;
 import hcmute.edu.vn.mssv18110278.database.DatabaseSelectHelper;
 import hcmute.edu.vn.mssv18110278.Entity.Roles;
 import hcmute.edu.vn.mssv18110278.Entity.User;
@@ -46,21 +44,14 @@ public class LoginButtonController implements View.OnClickListener {
 
 
                 String roleName = DatabaseSelectHelper.getRoleName(user.getRole(), appContext);
-                Toast.makeText(appContext,"Thành công"+user.getUsername(),Toast.LENGTH_SHORT).show();
+                //Toast.makeText(appContext,"Thành công"+user.getUsername(),Toast.LENGTH_SHORT).show();
                 if (roleName.equals(Roles.ADMIN.name())) {
-                    Intent intent = new Intent(appContext, AdminHomeActivity.class);
+                    Intent intent = new Intent(appContext,AdminActivity.class);
                     intent.putExtra("user", (Parcelable) user);
-                    appContext.startActivity(intent);
-                } else if (roleName.equals(Roles.EMPLOYEE.name())) {
-                    Intent intent = new Intent(appContext, EmployeeHomeActivity.class);
-                    intent.putExtra("user", (Parcelable) user);
-                    appContext.startActivity(intent);
-                    intent.putExtra("backPress", "no");
                     appContext.startActivity(intent);
                 } else if (roleName.equals(Roles.CUSTOMER.name())) {
-                    Intent intent = new Intent(appContext, CustomerHomeActivity.class);
+                    Intent intent = new Intent(appContext, AdminActivity.class);
                     intent.putExtra("user", (Parcelable) user);
-                    appContext.startActivity(intent);
                     appContext.startActivity(intent);
                 }
             } else {

@@ -28,4 +28,11 @@ public class DatabaseInsertHelper {
         dbA.close();
         return Math.toIntExact(roleId);
     }
+
+    public static void insertProduct(String category,String item_name, int item_price, String item_detail,int status ,byte[] image, Context context) {
+        DatabaseDriverAndroid dbA = new DatabaseDriverAndroid(context);
+        int id_category = (int)dbA.insertNewCategory(category);
+        dbA.insertNewProduct(id_category,item_name, item_price, item_detail,status ,image);
+        dbA.close();
+    }
 }

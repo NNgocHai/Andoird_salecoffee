@@ -38,12 +38,6 @@ public class SignUpActivity  extends Activity {
         String access = intent.getStringExtra("access");
 
 
-
-        EditText username = findViewById(R.id.username);
-        EditText email = findViewById(R.id.email);
-        EditText password = findViewById(R.id.password);
-        EditText Confirm_password = findViewById(R.id.confirm_password);
-
         TextView sign_up = findViewById(R.id.sign_up);
         back_to_login=(Button)findViewById(R.id.back_login_btn);
         take_photo_btn=(Button)findViewById(R.id.take_photo_btn);

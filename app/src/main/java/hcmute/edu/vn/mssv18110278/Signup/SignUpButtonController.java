@@ -49,7 +49,11 @@ public class SignUpButtonController implements View.OnClickListener {
         if (!Validator.validateUserName(parse_username)) {
             error.setText(R.string.name_error);
             Iserror = true;
-        } else if (!Validator.validateEmail(parse_email)) {
+        }else if (!Validator.validateUserUnique(parse_username,appContext)) {
+            error.setText(R.string.unique_username);
+            Iserror = true;
+        }
+        else if (!Validator.validateEmail(parse_email)) {
             error.setText(R.string.email_error);
             Iserror = true;
         } else if (!Validator.validatePassword(parse_password)) {
@@ -63,14 +67,14 @@ public class SignUpButtonController implements View.OnClickListener {
             int roleId = DatabaseInsertHelper.insertRole(role, appContext);
             DatabaseInsertHelper.insertNewUser(parse_username, parse_email, parse_password, roleId,ConverttoArrayByte(image), appContext);
 
-        }
-
             Intent intent = new Intent(appContext, WelcomeActivity.class);
             intent.putExtra("name", parse_username);
             intent.putExtra("role", role);
             intent.putExtra("access", access);
             appContext.startActivity(intent);
             ((SignUpActivity) appContext).finish();
+        }
+
 
     }
     public byte[] ConverttoArrayByte(ImageView img)

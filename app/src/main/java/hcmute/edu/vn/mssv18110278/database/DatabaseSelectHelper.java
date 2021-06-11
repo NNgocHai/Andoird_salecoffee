@@ -6,7 +6,9 @@ import android.database.Cursor;
 import java.util.ArrayList;
 import java.util.List;
 
+import hcmute.edu.vn.mssv18110278.Entity.Item;
 import hcmute.edu.vn.mssv18110278.Entity.User;
+import hcmute.edu.vn.mssv18110278.Users.Admin.AdminActivity;
 
 public class DatabaseSelectHelper {
     public static int getRoleIdFromName(String roleName, Context context) {
@@ -64,5 +66,45 @@ public class DatabaseSelectHelper {
         cursor.close();
         myDB.close();
         return user;
+    }
+
+    public static List<String> getNameCategory(Context context) {
+        DatabaseDriverAndroid myDB = new DatabaseDriverAndroid(context);
+        Cursor cursor = myDB.getNameCategory();
+        List<String> names = new ArrayList<>();
+
+        while (cursor.moveToNext()) {
+            names.add(cursor.getString (cursor.getColumnIndex("NAME")));
+        }
+        cursor.close();
+        myDB.close();
+        return names;
+    }
+
+    public static List<String> getUsers(Context context) {
+        DatabaseDriverAndroid myDB = new DatabaseDriverAndroid(context);
+        Cursor cursor = myDB.getAllUer();
+        List<String> names = new ArrayList<>();
+
+        while (cursor.moveToNext()) {
+            names.add(cursor.getString (cursor.getColumnIndex("USERNAME")));
+        }
+        cursor.close();
+        myDB.close();
+        return names;
+
+    }
+
+    public static List<Item> getAllItem(Context context) {
+        DatabaseDriverAndroid myDB = new DatabaseDriverAndroid(context);
+        Cursor cursor = myDB.getAllItem();
+        List<Item> items = new ArrayList<>();
+        while (cursor.moveToNext()) {
+            items.add(new Item(cursor.getInt(0),cursor.getInt(1), cursor.getString(2),
+                    cursor.getInt(3), cursor.getString(4),cursor.getInt(5), cursor.getBlob(6)));
+        }
+        cursor.close();
+        myDB.close();
+        return items;
     }
 }

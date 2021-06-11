@@ -23,8 +23,10 @@
         <activity android:name=".ForgetPasswordActivity"></activity>
         <activity android:name=".Signup.WelcomeActivity"></activity>
         <activity android:name=".Users.Admin.AdminHomeActivity"></activity>
-        <activity android:name=".Users.Employee.EmployeeHomeActivity"></activity>
+        <activity android:name=".Users.Admin.AdminActivity"></activity>
         <activity android:name=".Users.Customer.CustomerHomeActivity"></activity>
+        <activity android:name=".Users.Admin.AddItemActivity"></activity>
+        <activity android:name=".Users.Admin.AddCustomerActivity"></activity>
 
     </application>
 
