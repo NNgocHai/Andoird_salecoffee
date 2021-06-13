@@ -35,8 +35,8 @@ public class AddSubmitController implements View.OnClickListener {
         String parse_employee_insert_item_detail = employee_insert_item_detail.getText().toString();
         String parse_employee_insert_item_category = employee_insert_item_category.getText().toString();
         String tem = parse_employee_insert_item_name;
-        tem.replaceAll("\\s+","");
-        tem.toLowerCase();
+        tem=tem.replaceAll("\\s+","");
+        tem=tem.toLowerCase();
 
         int idimage = appContext.getResources().getIdentifier("hcmute.edu.vn.mssv18110278:drawable/"+tem, null, null);
 
@@ -55,12 +55,18 @@ public class AddSubmitController implements View.OnClickListener {
             Iserror = true;
         }
         if (!Iserror) {
-                DatabaseInsertHelper.insertProduct(parse_employee_insert_item_category,parse_employee_insert_item_name, Integer.parseInt(parse_employee_insert_item_price), parse_employee_insert_item_detail,1 ,ConverttoArrayByte(employee_insert_item_image), appContext);
+            try {
+                DatabaseInsertHelper.insertProduct(parse_employee_insert_item_category, parse_employee_insert_item_name, Integer.parseInt(parse_employee_insert_item_price), parse_employee_insert_item_detail, 1, ConverttoArrayByte(employee_insert_item_image), appContext);
                 employee_insert_item_name.setText("");
                 employee_insert_item_price.setText("");
                 employee_insert_item_detail.setText("");
                 employee_insert_item_category.setText("");
-                Toast.makeText(appContext,"Insert success",Toast.LENGTH_SHORT).show();
+                Toast.makeText(appContext, "Insert success", Toast.LENGTH_SHORT).show();
+            }
+            catch (Exception e)
+            {
+                Toast.makeText(appContext, "Not exist image", Toast.LENGTH_SHORT).show();
+            }
         }
 
 

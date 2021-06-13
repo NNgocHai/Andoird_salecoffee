@@ -16,25 +16,27 @@
         android:layout_marginBottom="10dp"
         android:id="@+id/sign_up"
         android:text="Sign up"
-        android:textColor="#fff"
+        android:textColor="@color/title"
         android:textSize="35dp"
         android:textStyle="bold" />
     <EditText
-        android:textColor="#fff"
-        android:textColorHint="#eee"
+        android:textColor="@color/white"
+        android:textColorHint="#BCB7B7"
         android:id="@+id/username"
         android:paddingStart="10dp"
         android:paddingLeft="10dp"
         android:hint="Username"
+        android:background="@drawable/rounded_15dp"
         android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:background="@drawable/rounded_corner"
+
         android:textSize="17sp" />
     <EditText
-        android:textColor="#fff"
+        android:textColor="@color/white"
+        android:textColorHint="#BCB7B7"
         android:id="@+id/email"
-        android:textColorHint="#eee"
+        android:background="@drawable/rounded_15dp"
         android:inputType="textEmailAddress"
         android:paddingStart="10dp"
         android:paddingLeft="10dp"
@@ -42,12 +44,11 @@
         android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:background="@drawable/rounded_corner"
         android:textSize="17sp" />
     <EditText
-        android:textColor="#fff"
-        android:textColorHint="#eee"
+        android:textColor="@color/white"
         android:id="@+id/password"
+        android:background="@drawable/rounded_15dp"
         android:paddingStart="10dp"
         android:paddingLeft="10dp"
         android:hint="Password"
@@ -55,12 +56,12 @@
         android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:background="@drawable/rounded_corner"
+        android:textColorHint="#BCB7B7"
         android:textSize="17sp" />
     <EditText
-        android:textColor="#fff"
-        android:textColorHint="#eee"
+        android:textColor="@color/white"
         android:id="@+id/confirm_password"
+        android:background="@drawable/rounded_15dp"
         android:paddingStart="10dp"
         android:paddingLeft="10dp"
         android:hint="Confirm Password"
@@ -68,13 +69,12 @@
         android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:background="@drawable/rounded_corner"
+        android:textColorHint="#BCB7B7"
         android:textSize="17sp" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginTop="10dp">
         <Button
             android:id="@+id/take_photo_btn"
@@ -89,7 +89,8 @@
             android:id="@+id/image_sign_up"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="200dp"
+            android:layout_toRightOf="@+id/take_photo_btn"
+            android:layout_marginLeft="30dp"
             android:background="@drawable/ic_baseline_image_24"
             android:scaleType="centerCrop"/>
 
@@ -98,21 +99,22 @@
     <Button
         android:paddingRight="20dp"
         android:paddingLeft="20dp"
+        android:layout_marginTop="20dp"
         android:id="@+id/sign_up_btn"
         android:background="@drawable/round_corner_buttom"
         android:text="sign up"
-        android:textColor="#777"
+        android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:layout_gravity="center"/>
     <Button
         android:paddingRight="20dp"
         android:paddingLeft="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:id="@+id/back_login_btn"
         android:background="@drawable/round_corner_buttom"
         android:text="Login"
-        android:textColor="#777"
+        android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:layout_gravity="center"/>

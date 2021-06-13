@@ -2,6 +2,9 @@ package hcmute.edu.vn.mssv18110278.database;
 
 import android.content.Context;
 
+import java.util.List;
+
+import hcmute.edu.vn.mssv18110278.Entity.Category;
 import hcmute.edu.vn.mssv18110278.Validation.Validator;
 
 public class DatabaseInsertHelper {
@@ -31,7 +34,13 @@ public class DatabaseInsertHelper {
 
     public static void insertProduct(String category,String item_name, int item_price, String item_detail,int status ,byte[] image, Context context) {
         DatabaseDriverAndroid dbA = new DatabaseDriverAndroid(context);
-        int id_category = (int)dbA.insertNewCategory(category);
+        int id_category =-1;
+        List<Category> cates = DatabaseSelectHelper.getCategory(category,context);
+        if(cates.size()==0) {
+            id_category = (int) dbA.insertNewCategory(category);
+        }
+        else
+            id_category= cates.get(0).getId();
         dbA.insertNewProduct(id_category,item_name, item_price, item_detail,status ,image);
         dbA.close();
     }

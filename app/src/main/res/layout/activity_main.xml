@@ -35,68 +35,101 @@
             android:layout_margin="?actionBarSize"
             android:textStyle="bold"
             android:textSize="40sp"
-            android:textColor="#fff"
+            android:textColor="@color/title"
             android:text="Sign in"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <EditText
             android:textColor="#fff"
-            android:textColorHint="#eee"
+            android:textColorHint="#BCB7B7"
             android:paddingStart="10dp"
             android:paddingLeft="10dp"
             android:id="@+id/username_login"
             android:hint="Username"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            android:background="@drawable/rounded_corner"
+            android:background="@drawable/rounded_15dp"
             android:textSize="17sp" />
         <EditText
             android:textColor="#fff"
-            android:textColorHint="#eee"
+            android:textColorHint="#BCB7B7"
             android:paddingStart="10dp"
             android:paddingLeft="10dp"
             android:id="@+id/password_login"
             android:hint="Password"
             android:inputType="textPassword"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            android:background="@drawable/rounded_corner"
+            android:background="@drawable/rounded_15dp"
             android:textSize="17sp" />
         <Button
             android:paddingRight="20dp"
             android:paddingLeft="20dp"
+            android:layout_marginTop="20dp"
             android:id="@+id/login_btn"
             android:background="@drawable/round_corner_buttom"
             android:text="sign in"
-            android:textColor="#777"
-            android:layout_width="wrap_content"
-            android:layout_height="35dp" />
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
         <Button
-            android:layout_marginTop="20dp"
-            android:paddingRight="20dp"
-            android:paddingLeft="20dp"
-            android:id="@+id/sign_up_btn"
+            android:layout_margin="10dp"
             android:background="@drawable/round_corner_buttom"
-            android:text="sign up"
-            android:textColor="#777"
-            android:layout_width="wrap_content"
-            android:layout_height="35dp" />
-        <Button
-            android:layout_marginTop="20dp"
-            android:textColor="#777"
+            android:backgroundTint="#838180"
+            android:textColor="@color/white"
+            android:padding="10dp"
+            android:textColorHint="#BCB7B7"
             android:id="@+id/forget_password_btn"
             android:text="Forgot Password?"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="35dp"
+            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="60dp"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp"
+                android:id="@+id/sign_up_btn"
+                android:text="sign up"
+                android:backgroundTint="#838180"
+                android:background="@drawable/round_corner_buttom"
+                android:textColor="@color/white"
+                android:textColorHint="#BCB7B7"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp" />
+            <Button
+                android:layout_margin="20dp"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp"
+                android:id="@+id/view_as_guest_btn"
+                android:text="View shop"
+                android:background="@drawable/round_corner_buttom"
+                android:backgroundTint="#838180"
+                android:textColor="@color/white"
+                android:textColorHint="#BCB7B7"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_toRightOf="@id/sign_up_btn"
+                />
+        </RelativeLayout>
+
+
+
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:paddingRight="20dp"
             android:paddingLeft="20dp"
+            android:textColor="@color/red"
             android:id="@+id/error_login"
             />
 

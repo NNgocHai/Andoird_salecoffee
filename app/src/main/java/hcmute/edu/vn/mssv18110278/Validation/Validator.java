@@ -107,12 +107,5 @@ public class Validator {
     }
   }
 
-    public static boolean validateUniqueCategory(String namecategory,Context context) {
-      for (String name : DatabaseSelectHelper.getNameCategory(context)) {
-        if (namecategory.equalsIgnoreCase(name)) {
-          return false;
-        }
-      }
-      return true;
-    }
+
 }

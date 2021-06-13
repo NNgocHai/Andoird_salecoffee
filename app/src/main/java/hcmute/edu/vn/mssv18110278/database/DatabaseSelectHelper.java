@@ -6,6 +6,7 @@ import android.database.Cursor;
 import java.util.ArrayList;
 import java.util.List;
 
+import hcmute.edu.vn.mssv18110278.Entity.Category;
 import hcmute.edu.vn.mssv18110278.Entity.Item;
 import hcmute.edu.vn.mssv18110278.Entity.User;
 import hcmute.edu.vn.mssv18110278.Users.Admin.AdminActivity;
@@ -68,17 +69,17 @@ public class DatabaseSelectHelper {
         return user;
     }
 
-    public static List<String> getNameCategory(Context context) {
+    public static List<Category> getCategory(String cate,Context context) {
         DatabaseDriverAndroid myDB = new DatabaseDriverAndroid(context);
-        Cursor cursor = myDB.getNameCategory();
-        List<String> names = new ArrayList<>();
+        Cursor cursor = myDB.getNameCategory(cate);
+        List<Category> cates = new ArrayList<>();
 
         while (cursor.moveToNext()) {
-            names.add(cursor.getString (cursor.getColumnIndex("NAME")));
+            cates.add(new Category(cursor.getInt(0),cursor.getString(1)));
         }
         cursor.close();
         myDB.close();
-        return names;
+        return cates;
     }
 
     public static List<String> getUsers(Context context) {
@@ -102,6 +103,46 @@ public class DatabaseSelectHelper {
         while (cursor.moveToNext()) {
             items.add(new Item(cursor.getInt(0),cursor.getInt(1), cursor.getString(2),
                     cursor.getInt(3), cursor.getString(4),cursor.getInt(5), cursor.getBlob(6)));
+        }
+        cursor.close();
+        myDB.close();
+        return items;
+    }
+
+    public static Item getItem(int id, Context context) {
+        DatabaseDriverAndroid myDB = new DatabaseDriverAndroid(context);
+        Item item=null;
+        Cursor cursor = myDB.getItem(id);
+        if (cursor.moveToFirst()) {
+            item= new Item(cursor.getInt(0),cursor.getInt(1), cursor.getString(2),
+                    cursor.getInt(3), cursor.getString(4),cursor.getInt(5), cursor.getBlob(6));
+        }
+        cursor.close();
+        myDB.close();
+        return item;
+
+    }
+
+    public static List<String> getAllCategory(Context context) {
+        DatabaseDriverAndroid myDB = new DatabaseDriverAndroid(context);
+        Cursor cursor = myDB.getAllCategory();
+        List<String> namecates = new ArrayList<>();
+        while (cursor.moveToNext()) {
+            namecates.add(new String(cursor.getString(1)));
+        }
+        cursor.close();
+        myDB.close();
+        return namecates;
+    }
+
+    public static List<Item> getItembyname(String search, Context context) {
+        DatabaseDriverAndroid myDB = new DatabaseDriverAndroid(context);
+        Cursor cursor = myDB.getItembyName(search);
+        List<Item> items = new ArrayList<>();
+        while (cursor.moveToNext()) {
+            items.add(new Item(cursor.getInt(0),cursor.getInt(1), cursor.getString(2),
+                    cursor.getInt(3), cursor.getString(4),cursor.getInt(5), cursor.getBlob(6)));
+
         }
         cursor.close();
         myDB.close();

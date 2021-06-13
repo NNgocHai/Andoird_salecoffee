@@ -19,12 +19,12 @@ import hcmute.edu.vn.mssv18110278.Validation.Validator;
 public class SignUpButtonController implements View.OnClickListener {
     private Context appContext;
     private String role;
-    private String access;
 
-    public SignUpButtonController(Context context, String role, String access) {
+
+    public SignUpButtonController(Context context, String role) {
         appContext = context;
         this.role = role;
-        this.access = access;
+
     }
 
     @Override
@@ -70,7 +70,6 @@ public class SignUpButtonController implements View.OnClickListener {
             Intent intent = new Intent(appContext, WelcomeActivity.class);
             intent.putExtra("name", parse_username);
             intent.putExtra("role", role);
-            intent.putExtra("access", access);
             appContext.startActivity(intent);
             ((SignUpActivity) appContext).finish();
         }

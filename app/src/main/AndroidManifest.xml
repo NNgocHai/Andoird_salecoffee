@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="hcmute.edu.vn.mssv18110278">
 
     <uses-permission android:name="android.permission.CAMERA"/>
@@ -22,11 +23,10 @@
         <activity android:name=".Signup.SignUpActivity"></activity>
         <activity android:name=".ForgetPasswordActivity"></activity>
         <activity android:name=".Signup.WelcomeActivity"></activity>
-        <activity android:name=".Users.Admin.AdminHomeActivity"></activity>
         <activity android:name=".Users.Admin.AdminActivity"></activity>
-        <activity android:name=".Users.Customer.CustomerHomeActivity"></activity>
+        <activity android:name=".Users.User.HomeActivity"></activity>
         <activity android:name=".Users.Admin.AddItemActivity"></activity>
-        <activity android:name=".Users.Admin.AddCustomerActivity"></activity>
+        <activity android:name=".Users.Admin.UpdateItemActivity"></activity>
 
     </application>
 

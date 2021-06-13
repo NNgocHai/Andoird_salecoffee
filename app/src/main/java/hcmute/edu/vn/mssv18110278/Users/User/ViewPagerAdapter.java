@@ -1,4 +1,4 @@
-package hcmute.edu.vn.mssv18110278.Users.Admin;
+package hcmute.edu.vn.mssv18110278.Users.User;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -6,7 +6,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import org.jetbrains.annotations.NotNull;
-
 
 public class ViewPagerAdapter extends FragmentPagerAdapter {
 
@@ -25,15 +24,15 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                return new FragmentAdminProduct();
+                return new FragmentHome();
             case 1:
-                return new FragmentAdminOrder();
+                return new FragmentCart();
             case 2:
-                return new FragmentAdminOrder();
+                return new FragmentHistory();
             case 3:
-                return new FragmentInfo();
+                return new FragmentInformation();
             default:
-                return new FragmentAdminProduct();
+                return new FragmentHome();
         }
     }
 

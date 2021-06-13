@@ -11,10 +11,12 @@ import java.sql.Blob;
 
 import hcmute.edu.vn.mssv18110278.Security.PasswordHelpers;
 
+import static android.os.Build.ID;
+
 public class DatabaseDriverAndroid extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
-    private static final String DATABASE_NAME = "DB_salecoffee36.db";
+    private static final String DATABASE_NAME = "DB_salecoffee40.db";
 
     public DatabaseDriverAndroid(Context context) {
 
@@ -62,6 +64,9 @@ public class DatabaseDriverAndroid extends SQLiteOpenHelper {
                 + "USERID INTEGER NOT NULL,"
                 + "TOTALPRICE TEXT NOT NULL,"
                 + "STATE INTERGER NOT NULL,"
+                + "DATE STRING,"
+                + "ADDRESS STRING,"
+                + "PHONE STRING,"
                 + "FOREIGN KEY(USERID) REFERENCES USERS(ID))";
         sqLiteDatabase.execSQL(sql);
         sql = "CREATE TABLE DETAILORDERS "
@@ -95,9 +100,9 @@ public class DatabaseDriverAndroid extends SQLiteOpenHelper {
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
         return sqLiteDatabase.rawQuery("SELECT * FROM ROLES;", null);
     }
-    public Cursor getNameCategory() {
+    public Cursor getNameCategory(String cate) {
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-        return sqLiteDatabase.rawQuery("SELECT * FROM CATEGORY;", null);
+        return sqLiteDatabase.rawQuery("SELECT * FROM CATEGORY WHERE NAME = ?",  new String[]{String.valueOf(cate)});
     }
     public Cursor getAllUer() {
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
@@ -148,6 +153,15 @@ public class DatabaseDriverAndroid extends SQLiteOpenHelper {
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
         return sqLiteDatabase.rawQuery("SELECT * FROM USERS WHERE USERNAME = ?",
                 new String[]{String.valueOf(username)});
+    }
+    protected Cursor getItem(int id) {
+        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+        return sqLiteDatabase.rawQuery("SELECT * FROM ITEMS WHERE ID = ?",  new String[]{String.valueOf(id)});
+
+    }
+    public Cursor getAllCategory() {
+        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+        return sqLiteDatabase.rawQuery("SELECT * FROM CATEGORY;", null);
     }
     protected long insertNewUser(String username, String email, String password, byte[] image, int role) {
         long id = insertUser(username, email, role ,image);
@@ -214,6 +228,30 @@ public class DatabaseDriverAndroid extends SQLiteOpenHelper {
     }
 
 
+    public void updateItem(int id,int idcate, String parse_employee_update_item_name, int parse_employee_update_item_price, String parse_employee_update_item_detail, int status) {
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("IDCATEGORY", idcate);
+        contentValues.put("NAME", parse_employee_update_item_name);
+        contentValues.put("PRICE", parse_employee_update_item_price);
+        contentValues.put("DETAIL", parse_employee_update_item_detail);
+        contentValues.put("STATUS", status);
 
+        sqLiteDatabase.update("ITEMS", contentValues, "ID = ?", new String[]{String.valueOf(id)});
+        sqLiteDatabase.close();
+
+    }
+
+    public Cursor getItembyName(String search) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String qry = " select * from ITEMS where NAME like ?";
+        Cursor cursor = db.rawQuery(qry,new String[]{"%"+search+"%"});
+        return cursor;
+    }
+
+    public void deleteItem(int ProductID) {
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL("DELETE FROM ITEMS where ID = ?", new String[]{String.valueOf(ProductID)});
+    }
 }
 

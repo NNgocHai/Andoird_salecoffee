@@ -1,42 +1,34 @@
-package hcmute.edu.vn.mssv18110278.Users.Admin;
+package hcmute.edu.vn.mssv18110278.Users.User;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.MenuItem;
-import android.widget.TableLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.tabs.TabLayout;
 
-import java.util.List;
-
-import hcmute.edu.vn.mssv18110278.Entity.Item;
 import hcmute.edu.vn.mssv18110278.Entity.User;
 import hcmute.edu.vn.mssv18110278.R;
-import hcmute.edu.vn.mssv18110278.database.DatabaseSelectHelper;
 
-public class AdminActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
+
     private ViewPager viewpager;
     private ViewPagerAdapter adapter;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin);
+        setContentView(R.layout.activity_user_home);
 
-        viewpager= (ViewPager)findViewById(R.id.viewpager);
 
-        BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.bottomNavigationView);
+        User user = getIntent().getExtras().getParcelable("user");
+        int userID= user.getId();
+        viewpager= (ViewPager)findViewById(R.id.user_viewpager);
+
+        BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.user_bottomNavigationView);
         adapter= new ViewPagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
 
 
@@ -52,17 +44,17 @@ public class AdminActivity extends AppCompatActivity {
                 int a=1;
                 switch (position){
                     case 0:
-                        bottomNavigationView.getMenu().findItem(R.id.product_fragment).setChecked(true);
+                        bottomNavigationView.getMenu().findItem(R.id.user_home_fragment).setChecked(true);
                         adapter.notifyDataSetChanged();
                         break;
                     case 1:
-                        bottomNavigationView.getMenu().findItem(R.id.order_fragment).setChecked(true);
+                        bottomNavigationView.getMenu().findItem(R.id.user_cart_fragment).setChecked(true);
                         break;
                     case 2:
-                        bottomNavigationView.getMenu().findItem(R.id.report_fragment).setChecked(true);
+                        bottomNavigationView.getMenu().findItem(R.id.user_history_fragment).setChecked(true);
                         break;
                     case 3:
-                        bottomNavigationView.getMenu().findItem(R.id.infor_fragment).setChecked(true);
+                        bottomNavigationView.getMenu().findItem(R.id.user_infor_fragment).setChecked(true);
                         break;
 
                 }
@@ -75,22 +67,21 @@ public class AdminActivity extends AppCompatActivity {
         });
 
 
-        User user = getIntent().getExtras().getParcelable("user");
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.product_fragment:
+                    case R.id.user_home_fragment:
                         viewpager.setCurrentItem(0);
                         break;
-                    case R.id.order_fragment:
+                    case R.id.user_cart_fragment:
                         viewpager.setCurrentItem(1);
                         break;
-                    case R.id.report_fragment:
+                    case R.id.user_history_fragment:
                         viewpager.setCurrentItem(2);
                         break;
-                    case R.id.infor_fragment:
+                    case R.id.user_infor_fragment:
                         viewpager.setCurrentItem(3);
                         break;
                 }
@@ -105,6 +96,10 @@ public class AdminActivity extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-                adapter.notifyDataSetChanged();
+            adapter.notifyDataSetChanged();
+
     }
+
 }
+
+

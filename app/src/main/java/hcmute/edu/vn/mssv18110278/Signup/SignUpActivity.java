@@ -35,7 +35,6 @@ public class SignUpActivity  extends Activity {
         setContentView(R.layout.activity_sign_up);
         Intent intent = getIntent();
         String role = intent.getStringExtra("role");
-        String access = intent.getStringExtra("access");
 
 
         TextView sign_up = findViewById(R.id.sign_up);
@@ -60,7 +59,7 @@ public class SignUpActivity  extends Activity {
         });
         sign_up.setText(intent.getStringExtra("sign_up_display"));
 
-        sign_up_btn.setOnClickListener(new SignUpButtonController(this, role, access));
+        sign_up_btn.setOnClickListener(new SignUpButtonController(this, role));
 
     }
     private void askCameraPermission()

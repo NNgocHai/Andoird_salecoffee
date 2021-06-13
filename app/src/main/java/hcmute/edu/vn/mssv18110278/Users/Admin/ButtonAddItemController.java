@@ -10,11 +10,9 @@ import hcmute.edu.vn.mssv18110278.Entity.User;
 
 public class ButtonAddItemController implements View.OnClickListener {
     private Context appContext;
-    private User user;
 
-    public ButtonAddItemController(Context context, User user) {
+    public ButtonAddItemController(Context context) {
         appContext = context;
-        user =user;
     }
 
 
@@ -22,7 +20,6 @@ public class ButtonAddItemController implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         Intent intent = new Intent(appContext, AddItemActivity.class);
-        intent.putExtra("user", (Parcelable) user);
         appContext.startActivity(intent);
 
         

@@ -25,4 +25,5 @@
     <string name="error_existname">Enter name item</string>
     <string name="employee_item_category">Item Category</string>
     <string name="unique_username">Username existed</string>
+    <string name="employee_update">UPDATE ITEM</string>
 </resources>

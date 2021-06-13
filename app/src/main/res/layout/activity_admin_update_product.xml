@@ -12,7 +12,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="30dp"
         android:layout_gravity="center"
-        android:text="@string/employee_insert_item1"
+        android:text="@string/employee_update"
         android:textColor="@color/title"
         android:typeface="sans"
         android:textSize="35sp"
@@ -29,7 +29,7 @@
         android:textSize="20sp"
         android:layout_marginEnd="25dp"/>
     <ImageView
-        android:id="@+id/employee_insert_item_image"
+        android:id="@+id/employee_update_item_image"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:visibility="invisible"
@@ -42,7 +42,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="176dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_weight="0.5"
@@ -54,30 +54,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:text="@string/employee_item_category"
             android:textColor="@color/black" />
-        <EditText
-            android:id="@+id/employee_insert_item_category"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="17dp"
-            android:layout_marginRight="17dp"
-            android:layout_marginBottom="10dp"
-            android:backgroundTint="@color/black"
-            android:inputType="text"
-            android:textColor="@color/black" />
-
-
+        <Spinner
+            android:id="@+id/employee_update_item_category"
+            android:layout_marginStart="10dp"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:textColor="@color/black"
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:text="@string/employee_item_name"
             android:textColor="@color/black" />
+
         <EditText
-            android:id="@+id/employee_insert_item_name"
+            android:id="@+id/employee_update_item_name"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="17dp"
@@ -91,11 +87,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:text="@string/employee_item_price"
             android:textColor="@color/black" />
+
         <EditText
-            android:id="@+id/employee_insert_item_price"
+            android:id="@+id/employee_update_item_price"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="17dp"
@@ -110,11 +107,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:text="@string/employee_item_detail"
             android:textColor="@color/black" />
+
         <EditText
-            android:id="@+id/employee_insert_item_detail"
+            android:id="@+id/employee_update_item_detail"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="17dp"
@@ -124,10 +122,26 @@
             android:inputType="text"
             android:textColor="@color/black" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/employee_item_category"
+            android:textColor="@color/black" />
+        <Spinner
+            android:id="@+id/employee_update_item_status"
+            android:layout_marginStart="10dp"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:textColor="@color/black"
+            />
+
+
     </LinearLayout>
 
     <TextView
-        android:id="@+id/employee_insert_item_error"
+        android:id="@+id/employee_update_item_error"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -135,12 +149,11 @@
         android:textColor="@color/red" />
 
     <Button
-        android:id="@+id/employee_insert_item_submit_button"
+        android:id="@+id/employee_update_item_submit_button"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_gravity="center"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="40dp"
         android:layout_weight="0.1"

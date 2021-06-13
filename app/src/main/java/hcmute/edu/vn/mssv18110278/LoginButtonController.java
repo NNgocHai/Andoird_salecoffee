@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import hcmute.edu.vn.mssv18110278.Users.Customer.CustomerHomeActivity;
 import hcmute.edu.vn.mssv18110278.Users.Admin.AdminActivity;
 import hcmute.edu.vn.mssv18110278.database.DatabaseSelectHelper;
 import hcmute.edu.vn.mssv18110278.Entity.Roles;
