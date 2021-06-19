@@ -6,12 +6,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,10 +25,14 @@ import org.jetbrains.annotations.NotNull;
 import java.text.DecimalFormat;
 import java.util.List;
 
+import hcmute.edu.vn.mssv18110278.Entity.DetailOrders;
 import hcmute.edu.vn.mssv18110278.Entity.Item;
+import hcmute.edu.vn.mssv18110278.Entity.Order;
 import hcmute.edu.vn.mssv18110278.R;
 import hcmute.edu.vn.mssv18110278.Users.Admin.UpdateItemActivity;
 import hcmute.edu.vn.mssv18110278.database.DatabaseDriverAndroid;
+import hcmute.edu.vn.mssv18110278.database.DatabaseInsertHelper;
+import hcmute.edu.vn.mssv18110278.database.DatabaseSelectHelper;
 
 public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.MyViewHoder> {
     Context mContext;
@@ -41,7 +47,7 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.MyViewHo
     @Override
     public MyViewHoder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
         View v;
-        v= LayoutInflater.from(mContext).inflate(R.layout.item_contact_admin,parent,false);
+        v= LayoutInflater.from(mContext).inflate(R.layout.user_item,parent,false);
         MyViewHoder vHolder = new MyViewHoder(v);
         return vHolder;
     }
@@ -64,42 +70,45 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.MyViewHo
         }
         Bitmap bitmap= BitmapFactory.decodeByteArray(mData.get(position).getImage(), 0, mData.get(position).getImage().length);
         holder.img.setImageBitmap(bitmap);
-        holder.btn_update.setOnClickListener(new View.OnClickListener() {
+        holder.btn_add_cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, UpdateItemActivity.class);
-                intent.putExtra("ID", mData.get(position).getId());
-                ((Activity) mContext).startActivityForResult(intent,2);
+                if (HomeActivity.user.getId() != -1) {
+                    DatabaseInsertHelper.AddtoCart(HomeActivity.user, mData.get(position), mContext);
+                    Toast.makeText(mContext, "Thêm vào giỏ hàng thành công", Toast.LENGTH_SHORT).show();
+                } else {
+                    if (HomeActivity.detailOrders.size()  < 1) {
+                        HomeActivity.order = new Order(-1, -1, mData.get(position).getPrice(), 0, null, null, null);
+                        HomeActivity.detailOrders.add(new DetailOrders(-1, mData.get(position).getId(), 1, mData.get(position).getPrice()));
+                    } else {
+                        int IsExisted =0;
+                        for (DetailOrders detailOrders : HomeActivity.detailOrders) {
+                            if (detailOrders.getIditem() == mData.get(position).getId()) {
+                                detailOrders.setMount(detailOrders.getMount() + 1);
+                                detailOrders.setTotalprice(detailOrders.getMount() * mData.get(position).getPrice());
+                                HomeActivity.order.setTOTALPRICE(HomeActivity.order.getTOTALPRICE()+mData.get(position).getPrice());
+                                IsExisted =1;
+                                break;
+                            }
+                        }
+                        if(IsExisted==0)
+                        {
+                            HomeActivity.detailOrders.add(new DetailOrders(-1, mData.get(position).getId(), 1, mData.get(position).getPrice()));
+                            HomeActivity.order.setTOTALPRICE(HomeActivity.order.getTOTALPRICE()+mData.get(position).getPrice());
 
+                        }
+                    }
+                    Toast.makeText(mContext, "Thêm vào giỏ hàng thành công", Toast.LENGTH_SHORT).show();
+                }
             }
         });
-        holder.btn_delete.setOnClickListener(new View.OnClickListener() {
+        holder.lineritem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                AlertDialog dialog =new AlertDialog.Builder(mContext)
-                        .setTitle("")
-                        . setMessage("Bạn có chắc muôn xóa sản phẩm")
-                        .setPositiveButton("Ok",null)
-                        .setNegativeButton("Cancel",null)
-                        .show();
-
-                Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
-                positiveButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(mContext, "Delete sucess", Toast.LENGTH_SHORT).show();
-                        DatabaseDriverAndroid db =new DatabaseDriverAndroid(mContext);
-                        db.deleteItem(mData.get(position).getId());
-                        mData.remove(position);
-                        notifyItemRemoved(position);
-                        notifyItemRangeChanged(position,mData.size());
-                        dialog.dismiss();
-
-                    }
-                });
-
-
+                Item item =mData.get(position);
+                Intent intent = new Intent(mContext, DetailProductActivity.class);
+                intent.putExtra("item", (Parcelable) item);
+                ((Activity) mContext).startActivity(intent);
 
             }
         });
@@ -124,19 +133,24 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.MyViewHo
         private TextView tv_status;
         private ImageView img;
         private TextView tv_price;
-        private ImageButton btn_delete;
-        private ImageButton btn_update;
+        private ImageButton btn_add_cart;
+        private LinearLayout lineritem;
+
 
         public MyViewHoder(View itemview){
             super(itemview);
 
-            tv_name=(TextView) itemview.findViewById(R.id.name_product_admin);
-            tv_status= (TextView) itemview.findViewById(R.id.status_product_admin);
-            img = (ImageView) itemview.findViewById(R.id.img_contact);
-            tv_price= (TextView) itemview.findViewById(R.id.price_product_admin);
-            btn_delete =(ImageButton )itemview.findViewById(R.id.delete_admin);
-            btn_update =(ImageButton )itemview.findViewById(R.id.update_admin);
+            tv_name=(TextView) itemview.findViewById(R.id.name_product_user);
+            tv_status= (TextView) itemview.findViewById(R.id.status_product_user);
+            img = (ImageView) itemview.findViewById(R.id.img_product_user);
+            tv_price= (TextView) itemview.findViewById(R.id.price_product_user);
+            btn_add_cart =(ImageButton )itemview.findViewById(R.id.add_cart_user);
+            lineritem =itemview.findViewById(R.id.lineritem);
         }
+    }
+    public void changeItemsbyCate(List<Item> items){
+        mData=items;
+        notifyDataSetChanged();
     }
 
 

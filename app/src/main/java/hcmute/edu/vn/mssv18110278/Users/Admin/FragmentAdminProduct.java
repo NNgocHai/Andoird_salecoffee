@@ -87,15 +87,6 @@ public class FragmentAdminProduct extends Fragment {
         super.onCreate(savedInstanceState);
 
     }
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//
-//                lstItem= DatabaseSelectHelper.getAllItem(context);
-//                AdapterProduct recyclerViewAdapter= new AdapterProduct(getContext(),lstItem);
-//                myrecyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
-//                myrecyclerview.setAdapter(recyclerViewAdapter);
-//
-//    }
+
 
 }

@@ -23,17 +23,25 @@ import org.jetbrains.annotations.NotNull;
 import java.text.DecimalFormat;
 import java.util.List;
 
+import hcmute.edu.vn.mssv18110278.Entity.Category;
+import hcmute.edu.vn.mssv18110278.Entity.DetailOrders;
 import hcmute.edu.vn.mssv18110278.Entity.Item;
 import hcmute.edu.vn.mssv18110278.R;
 import hcmute.edu.vn.mssv18110278.Users.Admin.UpdateItemActivity;
 import hcmute.edu.vn.mssv18110278.database.DatabaseDriverAndroid;
+import hcmute.edu.vn.mssv18110278.database.DatabaseSelectHelper;
+import hcmute.edu.vn.mssv18110278.database.DatabaseUpdateHelper;
 
 public class AdapterCate extends RecyclerView.Adapter<AdapterCate.MyViewHoder> {
     Context mContext;
     List<String> mData;
-    public AdapterCate(Context context, List<String> mData) {
+    List<Item> lstItem;
+    List<Category> categories;
+    AdapterProduct adapterProduct;
+    public AdapterCate(Context context, List<String> mData,AdapterProduct adapterProduct) {
         this.mContext = context;
         this.mData = mData;
+        this.adapterProduct=adapterProduct;
     }
 
     @NonNull
@@ -49,6 +57,30 @@ public class AdapterCate extends RecyclerView.Adapter<AdapterCate.MyViewHoder> {
     @Override
     public void onBindViewHolder(@NonNull @NotNull AdapterCate.MyViewHoder holder, int position) {
         holder.btn_cate.setText(mData.get(position));
+        String tv_btn = holder.btn_cate.getText().toString();
+        holder.btn_cate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(tv_btn !="ALL" ) {
+                    categories = DatabaseSelectHelper.getCategory(mData.get(position),mContext);
+                    lstItem = DatabaseSelectHelper.getIembyCate(categories.get(0).getId(),mContext);
+                    FragmentHome.idseach = categories.get(0).getId();
+                    adapterProduct.changeItemsbyCate(lstItem);
+                }
+                else
+                {
+                    lstItem=DatabaseSelectHelper.getAllItem(mContext);
+                    adapterProduct.changeItemsbyCate(lstItem);
+                    FragmentHome.idseach = -1;
+                }
+
+
+
+
+
+            }
+        });
+
     }
 
     @Override

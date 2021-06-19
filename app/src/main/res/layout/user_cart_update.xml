@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_margin="10dp">
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/img_product_cart_user"
+        android:src="@drawable/cappuccino"
+        android:scaleType="fitXY"/>
+    <LinearLayout
+        android:id="@+id/layout_1"
+        android:layout_width="245dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="11dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="40dp"
+        android:layout_toEndOf="@+id/cardView"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_TenSanPham"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="3dp"
+            android:paddingStart="5dp"
+            android:text="Cappuccino"
+            android:textColor="#00AC47"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:gravity="center"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_user_status_cart_update"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:paddingStart="5dp"
+                android:text="Tình trạng: "
+                android:textColor="#676767"
+                android:textSize="12dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_user_price_cart_update"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="2dp"
+                android:layout_toRightOf="@+id/tv_user_status_cart_update"
+                android:paddingStart="5dp"
+                android:text="Giá: "
+                android:textColor="#676767"
+                android:textSize="12dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txtSL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:paddingStart="5dp"
+                android:text="Số lượng:  "
+                android:layout_marginRight="10dp"
+                android:textColor="#676767"
+                android:textSize="12dp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/user_btnSub"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_margin="3dp"
+                android:layout_toRightOf="@+id/txtSL"
+                android:background="@drawable/negative" />
+
+            <TextView
+                android:id="@+id/tvsoluong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="3dp"
+                android:layout_marginBottom="2dp"
+                android:layout_toRightOf="@+id/user_btnSub"
+                android:paddingStart="5dp"
+                android:text="1"
+                android:textColor="#676767"
+                android:textSize="12dp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/user_btnAdd"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_margin="3dp"
+                android:layout_toRightOf="@+id/tvsoluong"
+                android:background="@drawable/plus" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/txtGiaSanPham"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="5dp"
+            android:text="20.000vnd"
+            android:textColor="#000"
+            android:textSize="12dp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+    <ImageButton
+        android:id="@+id/user_btn_delete"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:scaleType="fitXY"
+        android:layout_marginLeft="15dp"
+        android:background="@drawable/rounded_15dp"
+        android:src="@drawable/remove"/>
+
+</LinearLayout>
+
+

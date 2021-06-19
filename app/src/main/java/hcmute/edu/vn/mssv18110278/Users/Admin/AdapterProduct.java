@@ -84,7 +84,7 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.MyViewHo
 
                 AlertDialog dialog =new AlertDialog.Builder(mContext)
                         .setTitle("")
-                        . setMessage("Bạn có chắc muôn xóa sản phẩm")
+                        .setMessage("Bạn có chắc muôn xóa sản phẩm")
                         .setPositiveButton("Ok",null)
                         .setNegativeButton("Cancel",null)
                         .show();
@@ -99,6 +99,7 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.MyViewHo
                         mData.remove(position);
                         notifyItemRemoved(position);
                         notifyItemRangeChanged(position,mData.size());
+                        db.close();
                         dialog.dismiss();
 
                     }

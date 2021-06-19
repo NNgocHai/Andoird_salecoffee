@@ -2,10 +2,16 @@ package hcmute.edu.vn.mssv18110278.Validation;
 
 import android.content.Context;
 
-import hcmute.edu.vn.mssv18110278.Entity.Products;
+import java.util.List;
+
+import hcmute.edu.vn.mssv18110278.Entity.DetailOrders;
+import hcmute.edu.vn.mssv18110278.Entity.Item;
+import hcmute.edu.vn.mssv18110278.Entity.Order;
 import hcmute.edu.vn.mssv18110278.database.DatabaseSelectHelper;
 import hcmute.edu.vn.mssv18110278.Security.PasswordHelpers;
 import hcmute.edu.vn.mssv18110278.Entity.Roles;
+
+import static hcmute.edu.vn.mssv18110278.Users.User.HomeActivity.user;
 
 public class Validator {
 
@@ -108,4 +114,35 @@ public class Validator {
   }
 
 
+    public static boolean validateExistIDItem(int IDOrder, Item item , Context context) {
+      return DatabaseSelectHelper.getExistIDItemCart(IDOrder,item,context);
+    }
+
+    public static String validateItemAvailable(List<DetailOrders> detailOrders, Context context) {
+      Item item=null;
+      for (DetailOrders detailOrders1  : detailOrders) {
+        item =DatabaseSelectHelper.getItem(detailOrders1.getIditem(),context);
+
+        if (item.getStatus()==0) {
+          return item.getName();
+        }
+      }
+      return "ok";
+    }
+
+  public static boolean validateAddress(String parse_edt_address_payment) {
+    if (parse_edt_address_payment != null && !parse_edt_address_payment.equals("")) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public static boolean validatePhone(String parse_edt_phone_payment) {
+    if (parse_edt_phone_payment != null && !parse_edt_phone_payment.equals("")) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

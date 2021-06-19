@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import hcmute.edu.vn.mssv18110278.Users.Admin.AdminActivity;
+import hcmute.edu.vn.mssv18110278.Users.User.HomeActivity;
 import hcmute.edu.vn.mssv18110278.database.DatabaseSelectHelper;
 import hcmute.edu.vn.mssv18110278.Entity.Roles;
 import hcmute.edu.vn.mssv18110278.Entity.User;
@@ -49,7 +50,7 @@ public class LoginButtonController implements View.OnClickListener {
                     intent.putExtra("user", (Parcelable) user);
                     appContext.startActivity(intent);
                 } else if (roleName.equals(Roles.CUSTOMER.name())) {
-                    Intent intent = new Intent(appContext, AdminActivity.class);
+                    Intent intent = new Intent(appContext, HomeActivity.class);
                     intent.putExtra("user", (Parcelable) user);
                     appContext.startActivity(intent);
                 }

@@ -21,12 +21,21 @@
             </intent-filter>
         </activity>
         <activity android:name=".Signup.SignUpActivity"></activity>
+        <activity android:name=".Users.User.HomeActivity"></activity>
         <activity android:name=".ForgetPasswordActivity"></activity>
         <activity android:name=".Signup.WelcomeActivity"></activity>
         <activity android:name=".Users.Admin.AdminActivity"></activity>
-        <activity android:name=".Users.User.HomeActivity"></activity>
         <activity android:name=".Users.Admin.AddItemActivity"></activity>
         <activity android:name=".Users.Admin.UpdateItemActivity"></activity>
+        <activity android:name=".Users.User.PaymentActivity"></activity>
+        <activity android:name=".Users.User.DetailOrderActivity"></activity>
+        <activity android:name=".Users.User.DetailProductActivity"></activity>
+        <activity android:name=".Users.Admin.DetailOrderActivity"></activity>
+
+
+
+
+
 
     </application>
 

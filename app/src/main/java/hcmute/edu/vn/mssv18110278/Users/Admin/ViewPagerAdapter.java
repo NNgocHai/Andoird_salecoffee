@@ -29,7 +29,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
             case 1:
                 return new FragmentAdminOrder();
             case 2:
-                return new FragmentAdminOrder();
+                return new FragmentAdminReport();
             case 3:
                 return new FragmentInfo();
             default:

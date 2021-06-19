@@ -1,6 +1,9 @@
 package hcmute.edu.vn.mssv18110278.Entity;
 
-public class Item {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Item implements Parcelable {
     private int id;
     private int idcate;
     private String name;
@@ -18,6 +21,28 @@ public class Item {
         this.status = status;
         this.image = image;
     }
+
+    protected Item(Parcel in) {
+        id = in.readInt();
+        idcate = in.readInt();
+        name = in.readString();
+        price = in.readInt();
+        detail = in.readString();
+        status = in.readInt();
+        image = in.createByteArray();
+    }
+
+    public static final Creator<Item> CREATOR = new Creator<Item>() {
+        @Override
+        public Item createFromParcel(Parcel in) {
+            return new Item(in);
+        }
+
+        @Override
+        public Item[] newArray(int size) {
+            return new Item[size];
+        }
+    };
 
     public int getStatus() {
         return status;
@@ -70,5 +95,19 @@ public class Item {
     }
 
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeInt(idcate);
+        dest.writeString(name);
+        dest.writeInt(price);
+        dest.writeString(detail);
+        dest.writeInt(status);
+        dest.writeByteArray(image);
+    }
 }

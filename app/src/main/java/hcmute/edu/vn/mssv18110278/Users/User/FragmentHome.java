@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,12 +30,15 @@ import hcmute.edu.vn.mssv18110278.database.DatabaseSelectHelper;
 public class FragmentHome extends Fragment {
     Context context;
     View v;
-    private RecyclerView cyclerproduct,cyclercate;
+    public RecyclerView cyclerproduct;
+    private RecyclerView cyclercate;
     private List<Item> lstItem;
     private List<String> lstCate;
     private  ImageView home_gift;
     private EditText edtSearch;
     private Button btnSearch;
+    static public int idseach = -1;
+
     public FragmentHome() {
     }
 
@@ -46,18 +50,24 @@ public class FragmentHome extends Fragment {
 
         cyclerproduct =(RecyclerView) v.findViewById(R.id.user_recycle_product);
         cyclercate =(RecyclerView) v.findViewById(R.id.user_recycle_cate);
+
+        lstItem= DatabaseSelectHelper.getAllItem(context);
+        AdapterProduct recyclerViewAdapter1= new AdapterProduct(getContext(),lstItem);
+        cyclerproduct.setLayoutManager(new LinearLayoutManager(getActivity()));
+        cyclerproduct.setAdapter(recyclerViewAdapter1);
+
+
         lstCate= DatabaseSelectHelper.getAllCategory(context);
+        lstCate.add(0, "ALL");
+        AdapterCate recyclerViewAdapter= new AdapterCate(getContext(),lstCate,recyclerViewAdapter1);
+        LinearLayoutManager layoutManager
+                = new LinearLayoutManager(context);
+        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
 
-
-        AdapterCate recyclerViewAdapter= new AdapterCate(getContext(),lstCate);
-        cyclercate.setLayoutManager(new LinearLayoutManager(getActivity()));
+        cyclercate.setLayoutManager(layoutManager);
         cyclercate.setAdapter(recyclerViewAdapter);
 
 
-        LinearLayoutManager layoutManager
-                = new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false);
-
-        cyclercate.setLayoutManager(layoutManager);
 
 
         edtSearch=(EditText) v.findViewById(R.id.user_search_product);
@@ -68,19 +78,19 @@ public class FragmentHome extends Fragment {
             public void onClick(View v) {
                 String search = edtSearch.getText().toString();
                 lstItem = new ArrayList<>();
-                lstItem=DatabaseSelectHelper.getItembyname(search,context);
+                if(idseach ==-1) {
+                    lstItem = DatabaseSelectHelper.getItembyname(search, context);
 
-                AdapterProduct recyclerViewAdapter= new AdapterProduct(getContext(),lstItem);
-                cyclerproduct.setLayoutManager(new LinearLayoutManager(getActivity()));
-                cyclerproduct.setAdapter(recyclerViewAdapter);
+                }
+                else {
+                    lstItem =DatabaseSelectHelper.getIembyCate_Name(idseach,search,context);
 
+                }
+                recyclerViewAdapter1.changeItemsbyCate(lstItem);
             }
         });
 
-        lstItem= DatabaseSelectHelper.getAllItem(context);
-        AdapterProduct recyclerViewAdapter1= new AdapterProduct(getContext(),lstItem);
-        cyclerproduct.setLayoutManager(new LinearLayoutManager(getActivity()));
-        cyclerproduct.setAdapter(recyclerViewAdapter1);
+
 
         return v;
     }
@@ -93,11 +103,7 @@ public class FragmentHome extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-                lstItem= DatabaseSelectHelper.getAllItem(context);
-                AdapterProduct recyclerViewAdapter= new AdapterProduct(getContext(),lstItem);
-                cyclerproduct.setLayoutManager(new LinearLayoutManager(getActivity()));
-                cyclerproduct.setAdapter(recyclerViewAdapter);
-
     }
+
 
 }

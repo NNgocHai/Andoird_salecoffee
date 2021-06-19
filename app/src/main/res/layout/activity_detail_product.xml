@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="hcmute.edu.vn.mssv18110278.Users.User.DetailProductActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="10">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="NAME PRODUCT"
+        android:textColor="@color/title"
+        android:id="@+id/user_name_product"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:gravity="center"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/image_product"
+        android:src="@drawable/espresso_con_panna"
+        android:layout_weight="4"
+        android:scaleType="fitXY"
+        />
+
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        android:weightSum="10">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/status_product"
+            android:layout_weight="5"
+            android:text="Tình trạng"
+            android:textSize="20dp"
+            android:gravity="center"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/price_product"
+            android:layout_weight="5"
+            android:text="Giá"
+            android:textSize="20dp"
+            android:gravity="center">
+
+        </TextView>
+    </LinearLayout>
+    <TextView
+        android:layout_margin="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/detail_product"
+        android:layout_weight="3"
+        android:text="Giá"
+        android:textSize="20dp">
+    </TextView>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_add_tocart"
+        android:layout_weight="0.5"
+        android:background="@drawable/rounded_15dp"
+        android:backgroundTint="#769FF3"
+        android:text="Thêm vào giỏ hàng"
+        android:textSize="20dp">
+    </Button>
+
+
+</LinearLayout>

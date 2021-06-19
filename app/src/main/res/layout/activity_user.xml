@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     tools:ignore="HardcodedText"
-
     tools:context=".Users.User.HomeActivity">
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/user_bottomNavigationView"
@@ -14,12 +13,8 @@
         app:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/user_menu_bottom_navigation" />
-
-
-
-
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/user_viewpager"
+        android:id="@+id/user_viewpager1"
         android:layout_width="413dp"
         android:layout_height="729dp"
         tools:ignore="MissingConstraints" />

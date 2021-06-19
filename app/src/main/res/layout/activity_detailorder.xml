@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="hcmute.edu.vn.mssv18110278.Users.User.DetailOrderActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="10"
+    android:id="@+id/linear_detailbill">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="BILL DETAILS"
+        android:textColor="@color/title"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:gravity="center"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/user_detail_bill"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:layout_marginTop="5dp"
+        android:scrollbars="vertical"
+        />
+
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        android:id="@+id/linear2">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:text="Tổng tiền:"
+            android:textSize="30sp"
+            android:textColor="#F44336"
+            android:textStyle="bold">
+
+        </TextView>
+        <TextView
+            android:id="@+id/user_total"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="12dp"
+            android:textStyle="bold"
+            android:textColor="#000"
+            android:text=" VND"
+
+            android:textSize="30sp">
+
+        </TextView>
+    </LinearLayout>
+
+</LinearLayout>

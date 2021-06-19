@@ -21,7 +21,6 @@ public class AddItemActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_item);
 
         Intent intent = getIntent();
-        User user = (User) intent.getSerializableExtra("user");
 
         submit_btn = (Button)findViewById(R.id.employee_insert_item_submit_button);
         submit_btn.setOnClickListener(new AddSubmitController(this));
