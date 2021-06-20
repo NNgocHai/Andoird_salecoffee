@@ -4,14 +4,15 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:layout_margin="10dp"
-    android:background="#6A6C6C"
+    android:background="@drawable/rounded_15dp"
+    android:backgroundTint="@color/white"
     android:weightSum="10"
 
     android:id="@+id/liner_order">
     <ImageView
         android:id="@+id/tv_image_user"
         android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_height="match_parent"
         android:src="@drawable/cappuccino"
         android:scaleType="fitXY"
         android:textSize="18sp"
@@ -22,7 +23,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textSize="18sp"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:text="username"
         android:layout_marginLeft="10dp"
         android:layout_gravity="center"
@@ -31,7 +32,7 @@
     <TextView
         android:id="@+id/tv_date"
         android:layout_width="0dp"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:text="date"

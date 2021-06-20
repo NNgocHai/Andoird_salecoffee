@@ -7,11 +7,15 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import org.jetbrains.annotations.NotNull;
 
+import hcmute.edu.vn.mssv18110278.Entity.User;
+
 
 public class ViewPagerAdapter extends FragmentPagerAdapter {
+    User user;
 
-    public ViewPagerAdapter(@NonNull @NotNull FragmentManager fm, int behavior) {
+    public ViewPagerAdapter(@NonNull @NotNull FragmentManager fm, int behavior, User user1) {
         super(fm, behavior);
+        this.user=user1;
     }
 
     @Override
@@ -31,7 +35,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
             case 2:
                 return new FragmentAdminReport();
             case 3:
-                return new FragmentInfo();
+                return new FragmentInfo(user);
             default:
                 return new FragmentAdminProduct();
         }

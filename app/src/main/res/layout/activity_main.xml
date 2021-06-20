@@ -16,8 +16,9 @@
             android:scaleType="centerCrop"
             android:layout_width="match_parent"
             android:layout_height="0dp" />
-        <View
+        <ImageView
             android:layout_weight="1"
+            android:id="@+id/startup"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:background="@color/white"
@@ -36,7 +37,7 @@
             android:textStyle="bold"
             android:textSize="40sp"
             android:textColor="@color/title"
-            android:text="Sign in"
+            android:text="SIGN IN"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -85,7 +86,7 @@
             android:id="@+id/forget_password_btn"
             android:text="Forgot Password?"
             android:layout_width="wrap_content"
-            android:layout_height="35dp"
+            android:layout_height="40dp"
             />
         <RelativeLayout
             android:layout_width="match_parent"

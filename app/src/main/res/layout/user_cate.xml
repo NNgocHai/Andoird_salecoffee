@@ -7,10 +7,10 @@
         android:id="@+id/user_cate_btn"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:text="abc"
         android:layout_margin="10dp"
-        android:background="@drawable/rounded_15dp"
-        android:backgroundTint="@color/title" />
+        android:background="@drawable/round_corner_buttom"
+        android:backgroundTint="@color/teal_700"/>
 
 </LinearLayout>

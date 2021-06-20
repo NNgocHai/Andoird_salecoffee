@@ -15,10 +15,22 @@
         android:layout_gravity="center"
         android:layout_marginBottom="10dp"
         android:id="@+id/tv_payment"
-        android:text="Payment"
+        android:text="PAYMENT"
         android:textColor="@color/title"
         android:textSize="35dp"
         android:textStyle="bold" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:orientation="horizontal"
+        android:background="#DBFBFB"
+        android:layout_margin="10dp">
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="55dp"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/address" />
     <EditText
         android:textColorHint="#BCB7B7"
         android:id="@+id/edt_address_payment"
@@ -26,23 +38,40 @@
         android:paddingLeft="10dp"
         android:hint="Address"
         android:background="@drawable/rounded_15dp"
-        android:layout_margin="10dp"
+        android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:textSize="17sp" />
-    <EditText
-        android:textColorHint="#BCB7B7"
-        android:id="@+id/edt_phone_payment"
-        android:background="@drawable/rounded_15dp"
-        android:inputType="number"
-        android:paddingStart="10dp"
-        android:paddingLeft="10dp"
-        android:hint="Phone"
-        android:layout_margin="10dp"
+        android:textSize="17sp"
+        android:backgroundTint="#DBFBFB"/>
+    </LinearLayout>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:textSize="17sp" />
+        android:orientation="horizontal"
+        android:background="#DBFBFB"
+        android:layout_margin="10dp">
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="55dp"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/call" />
+        <EditText
+            android:backgroundTint="#DBFBFB"
+            android:textColorHint="#BCB7B7"
+            android:id="@+id/edt_phone_payment"
+            android:background="@drawable/rounded_15dp"
+            android:inputType="numberDecimal"
+            android:paddingStart="10dp"
+            android:paddingLeft="10dp"
+            android:hint="Phone"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:textSize="17sp" />
+    </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
+        android:background="#C4C8DF"
         android:id="@+id/user_RecyclerCart_payment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -76,7 +105,7 @@
                 android:textColor="#FF9800"
                 android:text="VND"
 
-                android:textSize="30sp">
+                android:textSize="25sp">
 
             </TextView>
         </LinearLayout>
@@ -89,7 +118,7 @@
         android:text="Đặt hàng"
         android:textColor="@color/white"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
+        android:layout_height="50dp"
         android:layout_gravity="center"/>
     <TextView
         android:layout_width="wrap_content"

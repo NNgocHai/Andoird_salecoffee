@@ -14,7 +14,8 @@
         android:textColor="@color/title"
         android:textStyle="bold"
         android:textSize="25sp"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:fontFamily="sans-serif-black"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleview_history"
@@ -43,6 +44,7 @@
         android:clickable="true"
         android:elevation="4dp"
         android:padding="20dp"
+        android:textColor="@color/white"
         android:visibility="invisible"
         android:text="Đăng nhâp" />
 

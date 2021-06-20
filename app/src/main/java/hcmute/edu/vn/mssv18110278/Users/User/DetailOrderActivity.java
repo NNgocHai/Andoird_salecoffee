@@ -46,7 +46,7 @@ public class DetailOrderActivity extends AppCompatActivity {
             total+=detailOrders1.getTotalprice();
         }
         format = decimalFormat.format(total);
-        user_total.setText(total+" VND");
+        user_total.setText(format+" VND");
 
 
     }

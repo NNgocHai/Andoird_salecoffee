@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.jetbrains.annotations.NotNull;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import hcmute.edu.vn.mssv18110278.Entity.DetailOrders;
@@ -46,9 +47,9 @@ public class AdapterOrder extends RecyclerView.Adapter<AdapterOrder.MyViewHoder>
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull AdapterOrder.MyViewHoder holder, int position) {
-        holder.date_order_user.setText("Thời gian "+String.valueOf(mData.get(position).getDATE()));
-        holder.address_order_user.setText("Địa điểm "+mData.get(position).getADDRESS());
-        holder.phone_order_user.setText("Số điện thoại "+mData.get(position).getPHONE());
+        holder.date_order_user.setText("Thời gian: "+String.valueOf(mData.get(position).getDATE()));
+        holder.address_order_user.setText("Địa điểm: "+mData.get(position).getADDRESS());
+        holder.phone_order_user.setText("Số điện thoại: "+mData.get(position).getPHONE());
         holder.Linear_order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,6 +59,17 @@ public class AdapterOrder extends RecyclerView.Adapter<AdapterOrder.MyViewHoder>
 
             }
         });
+        ArrayList<DetailOrders> detailOrders = (ArrayList<DetailOrders>) DatabaseSelectHelper.getbyIDOrder(mData.get(position).getID(),mContext);
+        int total =0;
+        for (DetailOrders detailOrders1 : detailOrders) {
+            total+=detailOrders1.getTotalprice();
+        }
+
+        String pattern = "###,###";
+        String format=null;
+        DecimalFormat decimalFormat = new DecimalFormat(pattern);
+        format = decimalFormat.format(total);
+        holder.total_product_user.setText(format +" VND");
 
 
 
@@ -77,7 +89,7 @@ public class AdapterOrder extends RecyclerView.Adapter<AdapterOrder.MyViewHoder>
     public static class MyViewHoder extends RecyclerView.ViewHolder
     {
 
-        private TextView date_order_user,address_order_user,phone_order_user;
+        private TextView date_order_user,address_order_user,phone_order_user,total_product_user;
         private LinearLayout Linear_order;
         public MyViewHoder(View itemview){
             super(itemview);
@@ -85,6 +97,7 @@ public class AdapterOrder extends RecyclerView.Adapter<AdapterOrder.MyViewHoder>
             date_order_user= (TextView) itemview.findViewById(R.id.date_order_user);
             address_order_user = (TextView) itemview.findViewById(R.id.address_order_user);
             phone_order_user= (TextView) itemview.findViewById(R.id.phone_order_user);
+            total_product_user= (TextView) itemview.findViewById(R.id.total_product_user);
 
         }
     }

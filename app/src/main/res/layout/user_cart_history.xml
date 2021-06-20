@@ -13,8 +13,8 @@
         android:src="@drawable/cappuccino"
         android:scaleType="fitXY"/>
     <LinearLayout
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        android:layout_width="220dp"
+        android:layout_height="match_parent"
         android:layout_marginLeft="16dp"
         android:orientation="vertical">
         <TextView
@@ -23,19 +23,24 @@
             android:textColor="@color/teal_700"
             android:text="Item Name"
             android:id="@+id/name_product_user"
-            android:textSize="15dp"/>
+            android:textSize="15dp"
+            android:layout_gravity="center"
+            android:fontFamily="sans-serif-black"/>
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="10">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#EDCDCD"
+                android:textColor="@color/black"
                 android:text="Price"
                 android:id="@+id/price_product_user"
-                android:textSize="15dp"/>
+                android:textSize="15dp"
+                android:layout_weight="5"
+                />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -43,7 +48,8 @@
                 android:textColor="@color/black"
                 android:text="Mount"
                 android:id="@+id/mount_product_user"
-                android:textSize="15dp"/>
+                android:textSize="15dp"
+                android:layout_weight="5"/>
         </LinearLayout>
 
 

@@ -1,5 +1,6 @@
 package hcmute.edu.vn.mssv18110278.Users.User;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import hcmute.edu.vn.mssv18110278.Entity.Order;
 import hcmute.edu.vn.mssv18110278.Entity.User;
 import hcmute.edu.vn.mssv18110278.R;
 import hcmute.edu.vn.mssv18110278.database.DatabaseInsertHelper;
+import hcmute.edu.vn.mssv18110278.database.DatabaseSelectHelper;
 
 public class DetailProductActivity extends AppCompatActivity {
 
@@ -34,8 +36,9 @@ public class DetailProductActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_product);
-
-        item = getIntent().getExtras().getParcelable("item");
+        Intent intent = getIntent();
+        int iditem = intent.getIntExtra("iditem",0);
+        item =DatabaseSelectHelper.getItem(iditem,getBaseContext());
 
         user_name_product = findViewById(R.id.user_name_product);
         image_product= findViewById(R.id.image_product);

@@ -12,7 +12,7 @@
         android:layout_gravity="center"
         android:layout_marginBottom="10dp"
         android:id="@+id/sign_up"
-        android:text="Order delivered"
+        android:text="ORDER DELIVERED"
         android:textColor="@color/title"
         android:textSize="35dp"
         android:textStyle="bold" />

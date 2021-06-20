@@ -24,6 +24,7 @@
             android:scaleType="centerCrop"
             android:background="@drawable/rounded_15dp"
             android:src="@drawable/cappuccino"
+
             android:layout_below="@+id/title_profile"/>
 
             <TextView
@@ -56,8 +57,6 @@
                 android:layout_marginBottom="3dp"
                 android:layout_marginTop="3dp"
                 android:background="@drawable/rounded_15dp"
-                android:clickable="true"
-                android:elevation="4dp"
                 android:padding="20dp"
                 android:text="đổi Mật khẩu"
                 />
@@ -70,7 +69,6 @@
                 android:layout_marginTop="3dp"
                 android:background="@drawable/rounded_15dp"
                 android:clickable="true"
-                android:elevation="4dp"
                 android:padding="20dp"
                 android:text="Đăng xuất" />
             <TextView
@@ -92,8 +90,8 @@
                 android:layout_marginTop="3dp"
                 android:background="@drawable/round_corner_buttom"
                 android:clickable="true"
-                android:elevation="4dp"
                 android:padding="20dp"
+                android:textColor="@color/white"
                 android:visibility="invisible"
                 android:text="Đăng nhâp" />
 

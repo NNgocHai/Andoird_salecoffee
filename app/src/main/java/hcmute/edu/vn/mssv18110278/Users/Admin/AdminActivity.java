@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.MenuItem;
 import android.widget.TableLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,23 +22,29 @@ import java.util.List;
 
 import hcmute.edu.vn.mssv18110278.Entity.Item;
 import hcmute.edu.vn.mssv18110278.Entity.User;
+import hcmute.edu.vn.mssv18110278.MainActivity;
 import hcmute.edu.vn.mssv18110278.R;
+import hcmute.edu.vn.mssv18110278.Users.User.DialogChangePassword;
+import hcmute.edu.vn.mssv18110278.Users.User.HomeActivity;
+import hcmute.edu.vn.mssv18110278.Validation.Validator;
 import hcmute.edu.vn.mssv18110278.database.DatabaseSelectHelper;
+import hcmute.edu.vn.mssv18110278.database.DatabaseUpdateHelper;
 
-public class AdminActivity extends AppCompatActivity {
+public class AdminActivity extends AppCompatActivity implements DialogChangePassword.DialogListener{
     private ViewPager viewpager;
     private ViewPagerAdapter adapter;
+    private User user;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
+        user = getIntent().getExtras().getParcelable("user");
 
         viewpager= (ViewPager)findViewById(R.id.viewpager);
-
         BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.bottomNavigationView);
-        adapter= new ViewPagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        adapter= new ViewPagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT,user);
 
 
         viewpager.setAdapter(adapter);
@@ -106,5 +113,25 @@ public class AdminActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
                 adapter.notifyDataSetChanged();
+    }
+    @Override
+    public void applyTexts(String parse_edit_password, String parse_edit_passwordnew1, String parse_edit_passwordnew2) {
+        if(!Validator.validateEmail(parse_edit_password)){
+            Toast.makeText(this, "Mật khẩu không đúng", Toast.LENGTH_SHORT).show();
+
+        }
+        else if(!Validator.validatePassword2(parse_edit_passwordnew1,parse_edit_passwordnew2)) {
+            Toast.makeText(this, "Confirm mật khẩu không chính xác", Toast.LENGTH_SHORT).show();
+
+        } else
+        {
+            DatabaseUpdateHelper.updatepassword(parse_edit_passwordnew1,getBaseContext());
+            Toast.makeText(this, "Đổi mật khẩu thành công", Toast.LENGTH_SHORT).show();
+            HomeActivity.user= null;
+            HomeActivity.user.setId(-1);
+            startActivity(new Intent(AdminActivity.this, MainActivity.class));
+            finish();
+
+        }
     }
 }

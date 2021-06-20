@@ -14,7 +14,8 @@
         android:textColor="@color/title"
         android:textStyle="bold"
         android:textSize="25sp"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:fontFamily="sans-serif-black"/>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/user_detail_bill"
         android:layout_width="match_parent"
@@ -38,7 +39,7 @@
             android:layout_marginTop="15dp"
             android:text="Tổng tiền:"
             android:textSize="30sp"
-            android:textColor="#F44336"
+            android:textColor="#FF9800"
             android:textStyle="bold">
 
         </TextView>
@@ -50,7 +51,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginEnd="12dp"
             android:textStyle="bold"
-            android:textColor="#000"
+            android:textColor="#FF9800"
             android:text=" VND"
 
             android:textSize="30sp">

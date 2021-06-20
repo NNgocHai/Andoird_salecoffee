@@ -106,8 +106,9 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.MyViewHo
             @Override
             public void onClick(View v) {
                 Item item =mData.get(position);
+                int iditem = item.getId();
                 Intent intent = new Intent(mContext, DetailProductActivity.class);
-                intent.putExtra("item", (Parcelable) item);
+                intent.putExtra("iditem",  iditem);
                 ((Activity) mContext).startActivity(intent);
 
             }

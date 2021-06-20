@@ -22,7 +22,7 @@ import static android.os.Build.ID;
 public class DatabaseDriverAndroid extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
-    private static final String DATABASE_NAME = "DB_salecoffee43.db";
+    private static final String DATABASE_NAME = "DB_salecoffee12.db";
 
     public DatabaseDriverAndroid(Context context) {
 
@@ -72,7 +72,7 @@ public class DatabaseDriverAndroid extends SQLiteOpenHelper {
                 + "STATUS INTERGER NOT NULL,"
                 + "DATE STRING,"
                 + "ADDRESS STRING,"
-                + "PHONE STRING,"
+                + "PHONE CHAR(64),"
                 + "FOREIGN KEY(USERID) REFERENCES USERS(ID))";
         sqLiteDatabase.execSQL(sql);
         sql = "CREATE TABLE DETAILORDERS "
@@ -439,7 +439,7 @@ public class DatabaseDriverAndroid extends SQLiteOpenHelper {
 
     public Cursor getreportbymonth() {
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-        Cursor cursor = sqLiteDatabase.rawQuery("SELECT strftime('%d-%m-%Y', DATE) AS DAY,SUM(TOTALPRICE) AS VALUE FROM ORDERS where status =? group by  strftime('%d-%m-%Y', DATE)",
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT strftime('%m-%Y', DATE) AS DAY,SUM(TOTALPRICE) AS VALUE FROM ORDERS where status =? group by  strftime('%m-%Y', DATE)",
                 new String[]{String.valueOf(1)});
         return cursor;
     }

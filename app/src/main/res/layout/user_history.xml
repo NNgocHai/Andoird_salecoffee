@@ -7,9 +7,15 @@
     android:background="@drawable/rounded_15dp"
     android:backgroundTint="#E3EFED"
     android:id="@+id/Linear_order">
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/icon_history" />
 
     <LinearLayout
-        android:layout_width="280dp"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:orientation="vertical">
@@ -45,11 +51,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
+
             android:textColor="@color/black"
             android:text="Total"
             android:id="@+id/total_product_user"
-            android:textSize="20dp"
+            android:textSize="15dp"
             android:layout_gravity="center" />
 
 

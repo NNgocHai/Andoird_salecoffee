@@ -54,34 +54,39 @@ public class FragmentAdminReport extends Fragment {
         v =inflater.inflate(R.layout.admin_report_fragment,container,false);
 
 
-        Context context = container.getContext();
+         context = container.getContext();
         barChart = v.findViewById(R.id.barchart);
-        setupbarchartday(barChart);
+        //setupbarchartday(barChart);
         spinner = v.findViewById(R.id.spinner);
-        
-        ArrayAdapter<String> Adaptername = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, namecategories);
+        List<String> times=new ArrayList<String>();
+        times.add("Day");
+        times.add("Month");
+        times.add("Year");
+
+
+        ArrayAdapter<String> Adaptername = new ArrayAdapter<String>(context,
+                android.R.layout.simple_spinner_item, times);
         Adaptername.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinner.setAdapter(Adaptername);
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
                 int index = spinner.getSelectedItemPosition();
-                if(index>0)
+                if(index>=0)
                 {
-                    String Month = MonthArray[index];
-                    if ( Month.equalIgnoreCase("August")) {
+                    if ( index==0) {
 
-                        startActivity(new Intent(date.this,MainActivity.class));
+                        setupbarchartday(barChart);
+                    }else if(index==1){
+                        setupbarchartmonth(barChart);
+                    }else if(index==2){
+                        setupbarchartyear(barChart);
                     }
-                    else{
-                        startActivity(new Intent(date.this,august
-                                .class));
 
+                    else{
+                        setupbarchartday(barChart);
                     }
                 }
-
-
             }
             public void onNothingSelected(AdapterView<?> parent) {
                 setupbarchartday(barChart);
@@ -124,10 +129,10 @@ public class FragmentAdminReport extends Fragment {
         xAxis.setDrawAxisLine(false);
         xAxis.setGranularity(1f);
         xAxis.setLabelCount(bar_graph_names.size());
-        xAxis.setLabelRotationAngle(270);
+        //xAxis.setLabelRotationAngle(270);
 
         //barChart.setFitBars(true);
-        barChart.animateY(2000);
+        //barChart.animateY(2000);
         barChart.invalidate();
 
     }
@@ -141,10 +146,10 @@ public class FragmentAdminReport extends Fragment {
         for(int i=0 ; i <bar_graph_values.size();i++) {
             barEntries.add(new BarEntry(i, bar_graph_values.get(i)));
         }
-        BarDataSet barDataSet =new BarDataSet(barEntries,"Day Sales");
+        BarDataSet barDataSet =new BarDataSet(barEntries,"Month Sales");
         barDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
         Description description = new Description();
-        description.setText("days");
+        description.setText("Months");
         barChart.setDescription(description);
 
         barDataSet.setValueTextSize(16f);
@@ -160,10 +165,10 @@ public class FragmentAdminReport extends Fragment {
         xAxis.setDrawAxisLine(false);
         xAxis.setGranularity(1f);
         xAxis.setLabelCount(bar_graph_names.size());
-        xAxis.setLabelRotationAngle(270);
+        //xAxis.setLabelRotationAngle(270);
 
         //barChart.setFitBars(true);
-        barChart.animateY(2000);
+        //barChart.animateY(2000);
         barChart.invalidate();
 
     }
@@ -177,10 +182,10 @@ public class FragmentAdminReport extends Fragment {
         for(int i=0 ; i <bar_graph_values.size();i++) {
             barEntries.add(new BarEntry(i, bar_graph_values.get(i)));
         }
-        BarDataSet barDataSet =new BarDataSet(barEntries,"Day Sales");
+        BarDataSet barDataSet =new BarDataSet(barEntries,"Year Sales");
         barDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
         Description description = new Description();
-        description.setText("days");
+        description.setText("year");
         barChart.setDescription(description);
 
         barDataSet.setValueTextSize(16f);
@@ -196,10 +201,10 @@ public class FragmentAdminReport extends Fragment {
         xAxis.setDrawAxisLine(false);
         xAxis.setGranularity(1f);
         xAxis.setLabelCount(bar_graph_names.size());
-        xAxis.setLabelRotationAngle(270);
+        //xAxis.setLabelRotationAngle(270);
 
         //barChart.setFitBars(true);
-        barChart.animateY(2000);
+        //barChart.animateY(2000);
         barChart.invalidate();
 
     }

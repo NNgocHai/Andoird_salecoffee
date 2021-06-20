@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 import hcmute.edu.vn.mssv18110278.Entity.DetailOrders;
@@ -42,8 +43,8 @@ public class PaymentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_payment);
         user = getIntent().getExtras().getParcelable("user");
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        //LocalDateTime now = LocalDateTime.of(2021,6,19 ,12,12,12);
         LocalDateTime now = LocalDateTime.now();
-
 
         user_RecyclerCart_payment = (RecyclerView) findViewById(R.id.user_RecyclerCart_payment);
         user_total_payment = (TextView) findViewById(R.id.user_total_payment);
